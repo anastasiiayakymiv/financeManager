@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+    <title>Personal Finance Manager</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Transactions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Categories</h1>
+        
+        <!-- Categories Table -->
+        <table id="category-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="category-list"></tbody>
+        </table>
+
+        <!-- Button to navigate to the Add Category page -->
+        <a class="btn-add" href="add-category.html">Add Category</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
