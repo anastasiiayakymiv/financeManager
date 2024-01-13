@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Categories</a></li>
-                <li><a href="#">Transactions</a></li>
+                <li><a href="transaction.html">Transactions</a></li>
             </ul>
         </nav>
     </header>
@@ -21,6 +21,9 @@
     <div class="container">
         <h1>Categories</h1>
         
+        <label for="search-category">Search Category:</label>
+        <input type="text" id="search-category" oninput="filterCategories()">
+
         <!-- Categories Table -->
         <table id="category-table">
             <thead>

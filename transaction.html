@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Personal Finance Manager - Transactions</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Transactions</h1>
+
+        <!-- Add Transaction Form -->
+        <form id="add-transaction-form">
+            <label for="category-select">Category:</label>
+            <select id="category-select"></select>
+
+            <label for="operation-select">Type of Operation:</label>
+            <select id="operation-select">
+                <option value="expense">Expense</option>
+                <option value="revenue">Revenue</option>
+            </select>
+
+            <label for="amount-input">Amount:</label>
+            <input type="number" id="amount-input" required>
+
+            <label for="date-input">Date:</label>
+            <input type="date" id="date-input" required>
+
+            <label for="description-input">Description:</label>
+            <input type="text" id="description-input">
+
+            <button type="button" onclick="addTransaction()">Add Transaction</button>
+        </form>
+
+        <!-- Transactions Table -->
+        <table id="transaction-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Type of Operation</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

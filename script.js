@@ -97,3 +97,119 @@ function hideForm() {
     document.getElementById('category-description').value = '';
 }
 
+function filterCategories() {
+    const searchInput = document.getElementById('search-category');
+    const searchTerm = searchInput.value.toLowerCase();
+    const categoryList = document.getElementById('category-list');
+
+    categories.forEach((category, index) => {
+        const categoryName = category.name.toLowerCase();
+        const categoryRow = categoryList.children[index];
+
+        if (categoryName.includes(searchTerm)) {
+            categoryRow.style.display = 'table-row';
+        } else {
+            categoryRow.style.display = 'none';
+        }
+    });
+}
+
+// ... (previous JavaScript code) ...
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadCategoriesForSelect(); // Load categories for the category-select dropdown
+    loadTransactions(); // Load transactions for the transaction table
+});
+
+function loadCategoriesForSelect() {
+    const categorySelect = document.getElementById('category-select');
+    
+    // Load categories from localStorage or use an empty array
+    categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+    categorySelect.innerHTML = '';
+
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.name;
+        option.textContent = category.name;
+        categorySelect.appendChild(option);
+    });
+}
+
+
+function addTransaction() {
+    const categorySelect = document.getElementById('category-select');
+    const operationSelect = document.getElementById('operation-select');
+    const amountInput = document.getElementById('amount-input');
+    const dateInput = document.getElementById('date-input');
+    const descriptionInput = document.getElementById('description-input');
+
+    const newTransaction = {
+        category: categorySelect.value,
+        operation: operationSelect.value,
+        amount: amountInput.value.trim(),
+        date: dateInput.value,
+        description: descriptionInput.value.trim()
+    };
+
+    if (newTransaction.category !== '' && newTransaction.amount !== '' && newTransaction.date !== '') {
+        transactions.push(newTransaction); // Add the new transaction to the list
+        saveTransactions(); // Save the transactions to localStorage
+        loadTransactions(); // Refresh the transaction table
+
+        // Clear input fields
+        categorySelect.value = '';
+        operationSelect.value = 'expense'; // Set a default value
+        amountInput.value = '';
+        dateInput.value = '';
+        descriptionInput.value = '';
+    }
+}
+
+
+function updateTransaction(index) {
+    const newName = prompt('Enter new name:');
+    const newDescription = prompt('Enter new description:');
+
+    if (newName !== null && newDescription !== null) {
+        transactions[index].name = newName.trim();
+        transactions[index].description = newDescription.trim();
+        saveTransactions();
+        loadTransactions();
+    }
+}
+
+function deleteTransaction(index) {
+    const confirmDelete = confirm('Are you sure you want to delete this transaction?');
+
+    if (confirmDelete) {
+        transactions.splice(index, 1);
+        saveTransactions();
+        loadTransactions();
+    }
+}
+
+function loadTransactions() {
+    const transactionList = document.getElementById('transaction-list');
+    transactionList.innerHTML = '';
+
+    transactions.forEach((transaction, index) => {
+        const row = transactionList.insertRow();
+        row.innerHTML = `<td>${transaction.category}</td>
+                         <td>${transaction.operation}</td>
+                         <td>${transaction.amount}</td>
+                         <td>${transaction.date}</td>
+                         <td>${transaction.description}</td>
+                         <td>
+                             <button onclick="updateTransaction(${index})">Update</button>
+                             <button onclick="deleteTransaction(${index})">Delete</button>
+                         </td>`;
+    });
+}
+
+function saveTransactions() {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+// ... (remaining JavaScript code) ...
