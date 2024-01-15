@@ -1,4 +1,4 @@
-// Load categories from localStorage or use an empty array
+
 let categories = JSON.parse(localStorage.getItem('categories')) || [];
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -22,14 +22,10 @@ function loadCategories() {
                           </td>`;
     });
 }
-// ... (previous JavaScript code) ...
 
 function goBack() {
     window.location.href = 'index.html';
 }
-
-// ... (remaining JavaScript code) ...
-
 
 function addCategory() {
     const categoryNameInput = document.getElementById('category-name');
@@ -114,17 +110,14 @@ function filterCategories() {
     });
 }
 
-// ... (previous JavaScript code) ...
-
 document.addEventListener('DOMContentLoaded', function () {
-    loadCategoriesForSelect(); // Load categories for the category-select dropdown
-    loadTransactions(); // Load transactions for the transaction table
+    loadCategoriesForSelect(); 
+    loadTransactions(); 
 });
 
 function loadCategoriesForSelect() {
     const categorySelect = document.getElementById('category-select');
     
-    // Load categories from localStorage or use an empty array
     categories = JSON.parse(localStorage.getItem('categories')) || [];
 
     categorySelect.innerHTML = '';
@@ -154,13 +147,12 @@ function addTransaction() {
     };
 
     if (newTransaction.category !== '' && newTransaction.amount !== '' && newTransaction.date !== '') {
-        transactions.push(newTransaction); // Add the new transaction to the list
-        saveTransactions(); // Save the transactions to localStorage
-        loadTransactions(); // Refresh the transaction table
+        transactions.push(newTransaction); 
+        saveTransactions(); 
+        loadTransactions(); 
 
-        // Clear input fields
         categorySelect.value = '';
-        operationSelect.value = 'expense'; // Set a default value
+        operationSelect.value = 'expense'; 
         amountInput.value = '';
         dateInput.value = '';
         descriptionInput.value = '';
@@ -212,4 +204,3 @@ function saveTransactions() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
-// ... (remaining JavaScript code) ...

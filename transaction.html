@@ -7,10 +7,18 @@
     <title>Personal Finance Manager - Transactions</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Categories</a></li>
+                <li><a href="#">Transactions</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h1>Transactions</h1>
 
-        <!-- Add Transaction Form -->
         <form id="add-transaction-form">
             <label for="category-select">Category:</label>
             <select id="category-select"></select>
@@ -33,7 +41,6 @@
             <button type="button" onclick="addTransaction()">Add Transaction</button>
         </form>
 
-        <!-- Transactions Table -->
         <table id="transaction-table">
             <thead>
                 <tr>
